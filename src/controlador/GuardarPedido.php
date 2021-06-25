@@ -14,8 +14,11 @@ $cantidades = $_POST['cantidades'];
 $id_empleado="E0000001";
 $id_c=0;
 $compra = new Compra($id_c,$id_empleado,$idp,$total,$fecha);
-echo($compra->getIdProveedor()." ".$fecha." ".$compra->getIdEmpleado());
-
+$descuento=$_POST['descuento'];
+$porcentaje = 1-(intval($descuento)/100);
+$total=round((floatval($total)*$porcentaje),2);
+echo($compra->getIdProveedor()." ".$fecha." ".$compra->getIdEmpleado()." ".$total);
+/*
 $data->guardarCompra($compra);
 $id_compra = $data->getIdCompra();
 echo("<br>".$id_compra);
@@ -23,6 +26,6 @@ for($i = 0; $i<count($codigos);$i++){
     $detalleCompra = new DetalleCompra($id_compra, $codigos[$i],$cantidades[$i]);
     $data->guardarDetalleCompra($detalleCompra);
 }
-
-header("Location: ../vista/Pedidos.php");
+*/
+//header("Location: ../vista/Pedidos.php");
 ?>

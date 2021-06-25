@@ -69,9 +69,35 @@ function eliminarZapatoComra(elmnt){
       document.getElementById("txtTotal").innerHTML="";
     }
 
+    function ponerDesc(){
+      var descuento = parseInt(document.getElementById("txtdescuento").value);
+      var total = parseFloat(document.getElementById("txtTotal").value);
+      if(isNaN(descuento)||isNaN(total)){
+        document.getElementById("totalDesc").innerText=" ";
+        document.getElementById("conDesc").innerText=" ";
+        if(isNaN(descuento)&&!isNaN(total)){
+          document.getElementById("iva").innerText="IVA (16%): "+(total*0.16);
+        }
+      }
+      else{
+        var cantdes = total*(descuento/100);
+        document.getElementById("totalDesc").innerText="Descuento: "+cantdes;
+        document.getElementById("conDesc").innerText="Total: "+(total-cantdes);
+        var iva = (total-cantdes)*0.16
+        document.getElementById("iva").innerText="IVA (16%): "+iva;
+      }
+    }
+    function quitarDesc(){
+      console.log("ola");
+      var total = parseFloat(document.getElementById("txtTotal").value);
+      document.getElementById("totalDesc").innerHTML=" ";
+      document.getElementById("conDesc").innerText=" ";
+      document.getElementById("iva").innerText="IVA (16%): "+(isNaN(total*0.16)?"":(total*0.16));
+    }
 
 $(document).ready(function(){
     $("#frm")[0].reset();
+    document.getElementById("descuento").checked=false;
     document.getElementById("txtTotal").value="";
     document.getElementById("txtTotal").innerHTML="";
     var sapato;
@@ -200,11 +226,34 @@ $(document).ready(function(){
         total+=parseFloat(filas[i].getElementsByTagName("td")[6].innerText);
       }
       document.getElementById("txtTotal").value=total;
+      if(document.getElementById("descuento").checked){
+        ponerDesc();
+      }
+      const desc = document.getElementById("txtdescuento").value;
       const selectProv = document.getElementById("prov").value;
       $("#frm")[0].reset();
       const proveedores = document.getElementById("prov").getElementsByTagName("option");
-      
+      document.getElementById("txtdescuento").value=desc;
       document.getElementById("prov").value=selectProv;
       document.getElementById("btnagregar").setAttribute("disabled","");
+    });
+
+    $("#descuento").click(function(){
+      //alert("abr");
+      if(document.getElementById("txtdescuento").className.includes("d-none")){
+        document.getElementById("blank").style="display:none";
+        var clase = document.getElementById("txtdescuento").className.replace("d-none","");
+        document.getElementById("txtdescuento").className=clase;
+        document.getElementById("txtdescuento").removeAttribute("disabled");
+        document.getElementById("txtdescuento").focus();
+        ponerDesc();
+      }
+      else{
+        document.getElementById("blank").style="";
+        document.getElementById("txtdescuento").className+=" d-none";
+        document.getElementById("txtdescuento").setAttribute("disabled","");
+        quitarDesc();
+      }
+      
     });
 });

@@ -5,6 +5,8 @@
     <meta name="viewport" contenet="width=decice-whith, initial-scale=1.0">
 
     <title>Inventario zapatos</title>
+
+    <!-- Librerias CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
@@ -18,7 +20,7 @@
 
 
 </head>
-<body onload="limpiar()">
+<body onload="limpiar()"> <!-- Limpia los formularios al cargar la página -->
     <div class="wrapper">
      <div class="navigation">
         
@@ -163,12 +165,15 @@
 
                     <div class="col-12 col-md-3"></div>
                     <div class="col-12 col-md-6"><br>
+                    <!-- Formulario, aqui se especifica el archivo PHP que manejará la información-->
                         <form enctype="multipart/form-data" action="../controlador/guardarSapato.php" method="post" id="formulario">
                             <div class="responsive input-group">
+                                <!-- Area para buscar un zapato por descripción -->
                                 <input type="text" id="buscar" name="buscar" class="form-control" placeholder="Ingrese el nombre del modelo de zapato" onkeyup="buscarTabla()"><span class="input-group-addon btn btn-outline-primary "> buscar</span>
 
                                 <span  type="button" class="input-group-addon btn btn-outline-primary "  data-toggle="modal" data-target="#exampleModalCenter"> <i class="fa fa-plus" aria-hidden="true"></i> Agregar </span>
                             </div>
+                            <!-- Panel emergente donde se llenan los datos del modelo de zapato -->
                              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -250,6 +255,7 @@
                                                 <label for="proveedor" class="col-sm-4 col-form-label">Proveedor*</label>
                                                     <div class="col-sm-8">
                                                       <select class="form-control" id="proveedor" name="proveedor" required onfocusout="vacio(this)">
+                                                        <!--  Listado de todos los proveedores en la lista desplegable -->
                                                         <?php
                                                         require_once "../modelo/Data.php";
                                                         $d = new Data();
@@ -275,7 +281,7 @@
                             <br>
                         </form>
                     </div>
-
+                    <!-- Tabla que muestra todos los zapatos disponibles-->
                     <div class="table-responsive" id="abr">
                         <table class="table table-hover" id="tabla">
                               <thead class="thead-dark">
@@ -293,6 +299,7 @@
                                 </tr>
                               </thead>
                               <tbody class="tcuerpo">
+                              <!-- Llenado de la tabla mediante la BD-->
                                 <?php
                                 require_once "../modelo/Data.php";
                                 $d = new Data();
@@ -343,6 +350,8 @@
          
         </div>
  </div>
+
+ <!-- Librerías de Javascript-->
  
  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"

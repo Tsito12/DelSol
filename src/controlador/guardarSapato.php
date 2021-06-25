@@ -105,7 +105,7 @@ echo "<br>";
 
 //echo"<br> <br> <br> <br> <br>Objeto zapato <br> <br> <br>";
 
-
+//Guardar el zapato en la BD
 if ( $archivo != "none" )
 {
     $fp = fopen($archivo, "rb");
@@ -121,7 +121,7 @@ if ( $archivo != "none" )
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-    
+    //Guarda las tallas disponibles para el modelo de zapato
     for ($i=0;$i<count($tallas);$i++)    
     {     
         $data->guardarZapatoTalla($codigo_sapato, $tallas[$i],0);    

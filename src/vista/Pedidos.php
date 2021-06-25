@@ -169,7 +169,7 @@
         </div>
 
         <div class="row">
-        <div class="col-sm-12 ml-auto row">
+        <div class="col-sm-12 ml-auto row d-flex">
                             <div class="col-5"></div>
                             <label class="col-4 ml-auto">No. Folio:</label>
                             <div class="col-12 d-flex">
@@ -187,6 +187,13 @@
                                 $folio.=$fr;
                                 echo("<input type=\"text\" name=\"No. Serie\" value=\"".$folio."\" class=\"form-control \" disabled>");
                             ?>
+                            <div class="col-1"></div>
+                            <div class="mt-1 col-2">
+                                <label for="descuento">Descuento</label>
+                                <input type="checkbox" name="check" id="descuento">
+                            </div>
+                            <div class="col-2" id="blank"></div>
+                            <input id="txtdescuento" name ="descuento" form="frm" type="text" placeholder="porcentaje de descuento" class="d-none col-2" onkeyup="ponerDesc()">
                             </div>
                             
             </div>
@@ -308,6 +315,20 @@
                     </div>
 
                     <div class="card-footer row">
+                        
+                        
+                        <div class="col-sm-3">
+                            
+                        </div>
+
+                        <div col-sm-3 ml-auto>
+                            <label for="txtTotal">Subtotal:</label>
+                            <input type="text" id="txtTotal" name="txtTotal" value="" class="form-control" disabled="">
+                        </div>
+                        <p id="totalDesc" class="h6"></p>
+                        <p id="iva" class="h6"></p>
+                        <p id="conDesc" class="h6"></p>
+                        
                         <div class="col-sm-6">
                             <button class="btn btn-success" onclick="guardarCompra()"
                                >
@@ -316,15 +337,6 @@
                             <a type="submit" name="accion" onclick="cancelarPedido()" value="Cancelar" class="btn btn-danger">
                                 <i class='bx bx-x-circle' > Cancelar</i>
                             </a>
-                        </div>
-                        
-                        <div class="col-sm-3">
-                            <label for="descuento">Descuento</label>
-                            <input type="checkbox" id="descuento">
-                        </div>
-
-                        <div col-sm-3 ml-auto>
-                            <input type="text" id="txtTotal" name="txtTotal" value="" class="form-control" disabled="">
                         </div>
                     </div>
                 </div>

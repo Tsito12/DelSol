@@ -329,7 +329,19 @@ class Data{
         }
         return $empleado;
     }
-
+/*
+    public function login($usuario, $contrasenia){
+      $user = mysqli_real_escape_string($this->con->getCon(), $usuario);
+      $pass = md5(mysqli_real_escape_string($this->con->getCon(), $contrasenia));
+      
+      $query = "SELECT e.id_empleado, e.nombre_empleado, e.apellido1_empleado , e.apellido2_empleado, e.sexo, e.edad,e.rfc_empleado, e.sueldo_base,e.puesto,u.usuario, u.contraseña FROM empleado e INNER JOIN usuario u on e.id_empleado = u.id_empleado WHERE u.usuario = '$user' AND u.contraseña = '$pass'";
+      $res = $this->con->ejecutar($query);
+      while($reg = mysqli_fetch_array($res)){
+        $c = new Compra($reg[0],$reg[1],$reg[2],$reg[3],$reg[4]);
+        array_push($compras,$c);
+      }
+    }
+*/
 }
 /*
 $obj = new Data();

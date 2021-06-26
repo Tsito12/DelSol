@@ -65,7 +65,7 @@ body{
   list-style: none;
 }
 .navigation ul li:hover{
-  background: #ea1d63;
+  background: #13DDB2;
 }
 .navigation ul li a{
   position: relative;
@@ -105,12 +105,10 @@ body{
 
 }
 /* cuerpo*/
-.wrapper {
-  width: 100%;
-}
+
 
  .main_content{
-  width: 500;
+  width: 800;
 
   margin-left:  280px;
 
@@ -127,10 +125,26 @@ body{
   opacity: 0.5;
   
 }
+
 /* 000000*/
+
+  .login-box {
+  opacity: .9;
+  width: 340px;
+  height: 460px;
+  background: #0F24F9;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
 .wrapper .curpo {
   display: inline-block;
   width: 100%;
+
   -webkit-transition: padding-left .3s ease;
   transition: padding-left .3s ease;
   overflow-x: hidden;
@@ -147,8 +161,8 @@ body{
 .article {
   width: 100%;
   background: rgb(164, 171, 255);
-  margin-bottom: 10px;
-  border-radius: 10px;
+  margin-bottom: 50px;
+  border-radius: 20px;
   padding: 10px 10px 10px 10px;
   transition: 0.3s;
   opacity: 0.8;
@@ -161,9 +175,7 @@ body{
   text-align: center;
   
 }
-a {
-  text-decoration: none;
-}
+
 
 .article:hover {
   box-shadow: 6px 8px 6px rgba(10, 17, 29, 0.26);
@@ -172,11 +184,15 @@ a {
   animation: swing ease-in-out .5s 1 alternate;
 }
 
+ a {
+  text-decoration: none;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
   .article p {
-    position: relative;
+   position: relative;
   display: block;
-    padding: 0px 5px;
+  padding: 10px 5px;
   text-align: center;
   color: #030249;
   margin-bottom: 5px;

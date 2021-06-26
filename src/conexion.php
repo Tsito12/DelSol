@@ -16,7 +16,7 @@
 		}
 	}
 
-	$obj=new conectar();
-	var_dump($obj->conexion());
+	//$obj=new conectar();
+	//var_dump($obj->conexion());
 
 ?>

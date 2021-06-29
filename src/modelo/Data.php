@@ -373,12 +373,64 @@ class Data{
         return $usuario;
     }
 
+    public function selectUsuarioN($user, $nombre){
+        $empleado;
+        $query = "SELECT u.id_empleado,e.nombre_empleado, e.apellido1_empleado,e.apellido2_empleado,e.sexo,e.edad,
+                  e.rfc_empleado, e.sueldo_base,e.puesto, u.usuario, u.contraseña 
+                  FROM empleado e INNER JOIN usuario u on e.id_empleado = u.id_empleado
+                                WHERE e.nombre_empleado = '$nombre' OR u.usuario = '$user'";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        $reg = mysqli_fetch_array($res);
+        $empleado = new Empleado($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5],$reg[6],$reg[7],$reg[8],$reg[9],$reg[10]);
+        return $usuario;
+    }
+
     public function updateUsuario($nom,$ape1,$ape2,$sexo,$edad,$rfc,$sueldo,$puesto,$user,$id){
         $error="";
         $query = "UPDATE empleado e INNER JOIN usuario u ON u.id_empleado = e.id_empleado  
                   SET e.nombre_empleado = '$nom', e.apellido1_empleado = '$ape1', e.apellido2_empleado= '$ape2', 
                   e.sexo = '$sexo', e.edad = $edad,e.rfc_empleado='$rfc',e.sueldo_base =$sueldo, 
                   e.puesto = '$puesto', u.usuario = '$user' WHERE e.id_empleado = '$id'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function getIdEmpleado(){
+        $query = "SELECT max(id_empleado) from empleado";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n", $error);
+        }
+        $reg = mysqli_fetch_array($res);
+        $ide = $reg[0];
+
+        return $ide;
+    }
+
+    public function guardarUsuario($user,$pas,$id_empleado){
+        $error="";
+        $query="INSERT INTO usuario(usuario,contraseña,id_empleado) VALUES ('$user','$pas','$id_empleado')";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function guardarEmpleado($nombre,$apellido1,$apellido2,$sexo,$edad,$rfc,$sueldo,$puesto){
+        $error="";
+        $query = "INSERT INTO empleado(nombre_empleado, apellido1_empleado , apellido2_empleado, 
+                  sexo, edad,rfc_empleado, sueldo_base,puesto) 
+                  VALUES('$nombre','$apellido1','$apellido2','$sexo',$edad,'$rfc',$sueldo,'$puesto')";
         $res=$this->con->ejecutar($query);
         if(!$res){
             $error = mysqli_error($this->con->getCon());

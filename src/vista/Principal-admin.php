@@ -131,7 +131,7 @@
                 <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Almacenista') { ?>
                     <div class="form-group col-12 col-md-3">
                         <div class="article">
-                            <a href="Proveedor-Administrador.php" style="text-decoration:none">
+                            <a href="Proveedores.php" style="text-decoration:none">
                                 <img src="../imgZ/proveedor.svg " width="400" height="250" alt="">
                                 <p>Proveedores</p>
                             </a>

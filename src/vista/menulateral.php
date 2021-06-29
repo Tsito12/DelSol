@@ -224,7 +224,7 @@ if (empty($_SESSION['active'])) {
 
             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Almacenista') { ?>
               <li>
-                 <a href="#">
+                 <a href="Proveedores.php">
                     <span class="icon"><i class="fa fa-truck" aria-hidden="true"></i></span>
                     <span class="title">Provedores</span>
                  </a>

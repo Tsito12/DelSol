@@ -110,7 +110,7 @@ body{
 }
 
  .main_content{
-  
+  width: 500;
 
   margin-left:  280px;
 
@@ -157,9 +157,6 @@ p{
   background: #02144F;
   padding: 0.5em;
 }
-.tit{
-  text-align: center;
-}
 .table-responsive{
    padding: 0.5em;
     width: 100%;
@@ -179,4 +176,3 @@ p{
 .modal-title, h5{
   text-align: center;
 }
-

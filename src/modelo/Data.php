@@ -4,6 +4,8 @@ require_once "zapato.php";
 require_once "proveedor.php";
 require_once "Compra.php";
 require_once "DetalleCompra.php";
+require_once "empleado.php";
+require_once "Usuario.php";
 class Data{
     private $con;
 
@@ -328,6 +330,61 @@ class Data{
             printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
         }
         return $empleado;
+    }
+
+    public function getEmpleados(){
+        $empleados = array();
+        $query ="SELECT e.id_empleado, e.nombre_empleado, e.apellido1_empleado,e.apellido2_empleado,e.sexo,
+                e.edad,e.rfc_empleado, e.sueldo_base,e.puesto, u.usuario,u.contraseña FROM empleado e 
+                INNER JOIN usuario u on e.id_empleado = u.id_empleado";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        while($reg = mysqli_fetch_array($res)){
+            $e = new Empleado($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5],$reg[6],$reg[7],$reg[8],$reg[9],$reg[10]);
+            array_push($empleados,$e);
+        }
+        return $empleados;
+    }
+
+    public function getEmpleadoU($ide){
+        $query = "SELECT e.id_empleado,e.nombre_empleado,e.apellido1_empleado,e.apellido2_empleado,
+                 e.sexo,e.edad,e.rfc_empleado,e.sueldo_base, e.puesto ,u.usuario, u.contraseña 
+                 FROM empleado e INNER JOIN usuario u on e.id_empleado = u.id_empleado WHERE e.id_empleado = '$ide' ";
+        $res= $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        $reg = mysqli_fetch_array($res);
+        $empleado = new Empleado($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5],$reg[6],$reg[7],$reg[8],$reg[9],$reg[10]);
+        return $empleado;
+    }
+
+    public function selectUsuario($user, $ide){
+        $query = "SELECT * FROM usuario 
+                                WHERE   usuario = '$user' AND id_empleado != '$id'";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        $reg = mysqli_fetch_array($res);
+        $usuario = new Usuario($reg[0],$reg[1],$reg[2]);
+        return $usuario;
+    }
+
+    public function updateUsuario($nom,$ape1,$ape2,$sexo,$edad,$rfc,$sueldo,$puesto,$user,$id){
+        $error="";
+        $query = "UPDATE empleado e INNER JOIN usuario u ON u.id_empleado = e.id_empleado  
+                  SET e.nombre_empleado = '$nom', e.apellido1_empleado = '$ape1', e.apellido2_empleado= '$ape2', 
+                  e.sexo = '$sexo', e.edad = $edad,e.rfc_empleado='$rfc',e.sueldo_base =$sueldo, 
+                  e.puesto = '$puesto', u.usuario = '$user' WHERE e.id_empleado = '$id'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n", $error);
+        }
+        return $error;
     }
 /*
     public function login($usuario, $contrasenia){

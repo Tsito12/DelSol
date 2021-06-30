@@ -7,6 +7,7 @@ require_once "DetalleCompra.php";
 require_once "empleado.php";
 require_once "Usuario.php";
 require_once "Cajero.php";
+require_once "Cliente.php";
 class Data{
     private $con;
 
@@ -442,7 +443,7 @@ class Data{
 
     public function getCajeros(){
         $cajeros = array();
-        $query = "SELECT * FROM cajero order by id_cajero";
+        $query = "SELECT * FROM cajero";
         $res = $this->con->ejecutar($query);
         if(!$res){
             printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
@@ -487,6 +488,45 @@ class Data{
             //printf("Errormessage: %s\n", $error);
         }
         return $error;
+    }
+
+    public function getClientes(){
+        $clientes = array();
+        $query="SELECT * from cliente";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        while($reg = mysqli_fetch_array($res)){
+            $c = new Cliente($reg[0],$reg[1],$reg[2],$reg[3],$reg[4]);
+            array_push($clientes,$c);
+        }
+        return $clientes;
+    }
+
+    public function insertarCliente($nom,$dir,$tel,$cor){
+        $query ="INSERT INTO cliente(nombre_cliente,direccion_cliente,telefono_cliente,correo_cliente) 
+                 VALUES ('$nom','$dir','$tel','$cor')";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            //printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function getCliente($idc){
+        $query = "SELECT * from cliente where id_cliente = '$idc'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n Query: %s", $error, $query);
+            return $error;
+        }
+        $reg = mysqli_fetch_array($res);
+        $cliente = new Cliente($reg[0],$reg[1],$reg[2],$reg[3],$reg[4]);
+
+        return $cliente;
     }
 /*
     public function login($usuario, $contrasenia){

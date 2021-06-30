@@ -66,6 +66,7 @@ CREATE TABLE `cajero` (
 
 LOCK TABLES `cajero` WRITE;
 /*!40000 ALTER TABLE `cajero` DISABLE KEYS */;
+INSERT INTO `cajero` VALUES ('E0000003','01',1),('E0000004','01',2);
 /*!40000 ALTER TABLE `cajero` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,8 +93,40 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES ('C0000001','Karla Egremy Castellanos','Domicilio conocido, un lugar','9513421574','kankar99@gmail.com'),('C0000002','Sonic el jeshejojo','Green hills','9514218745','gottagofast@sanic.com');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `generar_idcliente` BEFORE INSERT ON `cliente` FOR EACH ROW BEGIN
+DECLARE idc, size, sizeL, lop INT DEFAULT 0;
+DECLARE formato varchar(8);
+SELECT max( cast(substring(id_cliente,2,7) as unsigned)) as num from cliente INTO idc;
+SELECT LENGTH(idc) into size;
+SET formato = 'C';
+SET idc = idc+1;
+SELECT LENGTH(idc) into size;
+SET lop = 1;
+SET sizeL = 8-size;
+WHILE lop < sizeL DO
+SELECT CONCAT(formato,'0') INTO formato;
+SET lop= lop+1;
+END WHILE;
+SELECT CONCAT(formato, idc) INTO formato;
+SET NEW.id_cliente = formato;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `compra`
@@ -238,9 +271,40 @@ CREATE TABLE `empleado` (
 
 LOCK TABLES `empleado` WRITE;
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-INSERT INTO `empleado` VALUES ('E0000001','Kevin','Bautista','Hernandez','H',27,'BAHK940517HR05',1200.00,'Almacen');
+INSERT INTO `empleado` VALUES ('E0000001','Kevin','Bautista','Hernandez','H',27,'BAHK940517HR05',1200.00,'Administrador'),('E0000002','Mario','Farfan','Chavez','H',22,'FAC990220HOAB',2200.00,'Almacenista'),('E0000003','Jorge Octavio','Pacheco','Gabriel','H',21,'PGJ990730ACBD',2500.00,'Cajero'),('E0000004','Jesus Salvador','Juarez','Cruz','H',22,'JCJ990315DEFC',2100.00,'Cajero');
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `generar_ide` BEFORE INSERT ON `empleado` FOR EACH ROW BEGIN
+DECLARE ide, size, sizeL, lop INT DEFAULT 0;
+DECLARE formato varchar(8);
+SELECT max( cast(substring(id_empleado,2,7) as unsigned)) as num from empleado INTO ide;
+SELECT LENGTH(ide) into size;
+SET formato = 'E';
+SET ide = ide+1;
+SELECT LENGTH(ide) into size;
+SET lop = 1;
+SET sizeL = 8-size;
+WHILE lop < sizeL DO
+SELECT CONCAT(formato,'0') INTO formato;
+SET lop= lop+1;
+END WHILE;
+SELECT CONCAT(formato, ide) INTO formato;
+SET NEW.id_empleado = formato;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `proveedor`
@@ -350,6 +414,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES ('kevinlol','orejasdumbo','E0000001'),('pikachu','calculoxd','E0000004'),('xlFarfanlx','mariobroskks','E0000002'),('xXDonyXx','eldonasjaja','E0000003');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,4 +490,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-23 11:00:59
+-- Dump completed on 2021-06-30 10:07:09

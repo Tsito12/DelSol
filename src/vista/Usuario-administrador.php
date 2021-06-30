@@ -104,6 +104,7 @@
                                     echo "<td class=\"usuario\">".$e->getUsuario()."</td>";
                                     echo "<td class=\"passw\">".$e->getContrasenia()."</td>";
                                     echo "<td><button class=\"btn btn-warning\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                    echo "</tr>";
                                   }
                                   /*
                                     $query =mysqli_query($conectar,"SELECT e.id_empleado, e.nombre_empleado, e.apellido1_empleado,e.apellido2_empleado,e.sexo,e.edad,e.rfc_empleado, e.sueldo_base,e.puesto, u.usuario,u.contraseña FROM empleado e INNER JOIN usuario u on e.id_empleado = u.id_empleado WHERE e.Estatus=1 order by id_empleado" );

@@ -6,6 +6,7 @@ require_once "Compra.php";
 require_once "DetalleCompra.php";
 require_once "empleado.php";
 require_once "Usuario.php";
+require_once "Cajero.php";
 class Data{
     private $con;
 
@@ -435,6 +436,55 @@ class Data{
         if(!$res){
             $error = mysqli_error($this->con->getCon());
             printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function getCajeros(){
+        $cajeros = array();
+        $query = "SELECT * FROM cajero order by id_cajero";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        while($reg = mysqli_fetch_array($res)){
+            $c = new Cajero($reg[0],$reg[1],$reg[2]);
+            array_push($cajeros,$c);
+        }
+        return $cajeros;
+    }
+
+    public function eliminarCajero($idc,$ide){
+        $error="";
+        $query = "DELETE from cajero where id_cajero = '$idc' and id_empleado = '$ide'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function getCajero($ide,$idcajero){
+        $query = "SELECT * FROM cajero WHERE id_cajero = '$idcajero' or id_empleado = '$ide'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n Query: %s", $error, $query);
+            return $error;
+        }
+        $reg = mysqli_fetch_array($res);
+        $cajero = new Cajero($reg[0],$reg[1],$reg[2]);
+
+        return $cajero;
+    }
+
+    public function agregarCajero($idempleado,$idcajero,$numcajero){
+        $query = "INSERT INTO cajero(id_empleado, id_cajero, num_caja) VALUES('$idempleado','$idcajero',$numcajero)";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            //printf("Errormessage: %s\n", $error);
         }
         return $error;
     }

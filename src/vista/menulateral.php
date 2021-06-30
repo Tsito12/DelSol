@@ -1,7 +1,7 @@
 <!-- creacion del codigo php -->
 <?php
 // creacion de la conexion 
-include "../modelo/Data.php";
+//include "../modelo/Data.php";
 //sesion activa;
 session_start();
  //si la sesion no esta activa entonces te regresa a login  

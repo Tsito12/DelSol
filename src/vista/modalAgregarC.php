@@ -10,7 +10,7 @@
           }else{
      $alert=" ";
      $error="";
-      if (!empty($_POST)) {
+      if (!empty($_POST['nombre'])) {
     
       
       //$nit = $_POST['nit'];

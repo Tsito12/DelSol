@@ -528,6 +528,28 @@ class Data{
 
         return $cliente;
     }
+
+    public function editarCliente($id, $nom, $dir, $tel, $cor){
+        $error="";
+        $query="UPDATE cliente  SET nombre_cliente = '$nom', direccion_cliente = '$dir', 
+                telefono_cliente= '$tel', correo_cliente = '$cor' WHERE id_cliente = '$id'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            //printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function eliminarCliente($idcliente){
+        $query ="DELETE from cliente where id_cliente = '$idcliente'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            //printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
 /*
     public function login($usuario, $contrasenia){
       $user = mysqli_real_escape_string($this->con->getCon(), $usuario);

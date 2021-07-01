@@ -1,6 +1,14 @@
 <?php
 //include "conexion.php";
-                                              
+if(!empty($_POST['idu']))
+{
+    require_once "../modelo/Data.php";
+    $d = new Data();
+    $idcliente = $_POST['idu'];
+    $error = $d->eliminarCliente($idcliente);
+    //$query_delete = mysqli_query($conectar, "UPDATE cliente SET EstatusC = 0 WHERE id_cliente = $iduser");
+    
+}                                       
                                      
 ?>
 <!DOCTYPE html>
@@ -76,7 +84,7 @@
                               </thead>
                               <tbody class="tcuerpo">
                                 <?php
-                                    require_once "../modelo/Data.php";
+                                    //require_once "../modelo/Data.php";
                                     $d = new Data();
                                     $clientes = $d->getClientes();
                                     foreach($clientes as $c){
@@ -86,7 +94,7 @@
                                         echo "<td class=\"direccion\">".$c->getDireccionCliente()."</td>";
                                         echo "<td class=\"telefono\">".$c->getTelefonoCliente()."</td>";
                                         echo "<td class=\"correo\">".$c->getCorreoCliente()."</td>";
-                                        echo "<td><button class=\"btn btn-warning\"onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminarProv(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                        echo "<td><button class=\"btn btn-warning\"onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
                                         echo "</tr>";
                                     }
                                     /*
@@ -96,48 +104,37 @@
                                     
                                       while ($data = mysqli_fetch_array($query) ) {
 
-                                        
+                                       */ 
                                     ?>
+                                    <!-- 
                                 <tr>
                                   <th scope="row">
-                                    C<?php echo $data['id_cliente'];?>
+                                    C<?php// echo $data['id_cliente'];?>
                                   </th>
-                                  <td><?php echo $data['Nit'];?></td> 
-                                  <td><?php echo $data['nombre_cliente'];?></td>    
-                                  <td><?php echo $data['direccion_cliente'];?></td>
-                                  <td><?php echo $data['telefono_cliente'];?></td>
-                                  <td><?php echo $data['correo_cliente'];?></td>
+                                  <td><?php //echo $data['Nit'];?></td> 
+                                  <td><?php //echo $data['nombre_cliente'];?></td>    
+                                  <td><?php //echo $data['direccion_cliente'];?></td>
+                                  <td><?php //echo $data['telefono_cliente'];?></td>
+                                  <td><?php //echo $data['correo_cliente'];?></td>
                                   <td>
                                         
-                                        <a href="EditarCliente.php?id=<?php echo $data['id_cliente']; ?>" type="button" class="btn btn-warning "><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a> 
+                                        <a href="EditarCliente.php?id=<?php //echo $data['id_cliente']; ?>" type="button" class="btn btn-warning "><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a> 
                                       
                                        
-                                    </td>
+                                    </td>  -->
                                   
-                                  <?php
-                                      if(!empty($_GET['idu']))
-                                       {
-                                          $iduser = $_GET['idu'];
-
-                                          $query_delete = mysqli_query($conectar, "UPDATE cliente SET EstatusC = 0 WHERE id_cliente = $iduser");
-
-                                       }
-
-
-
-
-                                        ?>
+                                  
                                     <td>
-                                    <a href="listadocliente.php?idu=<?php echo $data['id_cliente']; ?>" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Borrar</a></td>
+                                    <!--<a href="listadocliente.php?idu=<?php //echo $data['id_cliente']; ?>" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Borrar</a></td>-->
                                     
                                  </tr>
                                 
                                  <?php
                                  
                                 
-                                }
+                                //}
 
-                                */
+                                
                               ?>
                                
                               </tbody>
@@ -147,12 +144,15 @@
                                 <form action="editarCliente.php" method="post" id="frm">
                                     <input id="idc" name ="idc" class="d-none"/>
                                 </form>
+                                <form action="" method="post" id="frmEliminar">
+                                    <input id="idu" name ="idu" class="d-none"/>
+                                </form>
                     </div>
                     <div class="col-12"><br></div>
                      <div class="col-12" style="text-align: center;" >
                                <a href="Apartado.php" type="button" class=" btn btn-primary "  > <i class="fa fa-undo" aria-hidden="true"></i> Apartado </a>
                     </div>
-
+                    <div ><?php echo isset($error) ? $error : ''; ?></div>                   
                 </div>
             </div>
             

@@ -13,20 +13,22 @@
        {
 
        $alert=" ";
+       $error="";
         $id = $_POST['id'];
         $nom = $_POST['nombre'];
         $dir = $_POST['direccion'];
         $tel = $_POST['telefono'];
         $cor = $_POST['correo'];
         
-
+        $d = new Data();
+        $error = $d->editarCliente($id, $nom, $dir, $tel, $cor);
         
-              $sql_update =  mysqli_query($conectar, "UPDATE cliente  SET nombre_cliente = '$nom', direccion_cliente = '$dir', telefono_cliente= '$tel', correo_cliente = '$cor' WHERE id_cliente = '$id'");
+              //$sql_update =  mysqli_query($conectar, "UPDATE cliente  SET nombre_cliente = '$nom', direccion_cliente = '$dir', telefono_cliente= '$tel', correo_cliente = '$cor' WHERE id_cliente = '$id'");
         
         
 
        
-          if($sql_update){
+          if($error!=""){
             
             $alert = ' <p class="msg_save"> Datos actualizaados correctos </p> ';
           }else{
@@ -126,6 +128,7 @@
       
 
       <div ><?php echo isset($alert) ? $alert : ''; ?></div>
+      <div ><?php echo isset($error) ? $error : ''; ?></div>
       <input class="btn  btn-primary" type="submit" value="Aceptar"> |
       <a href="listadocliente.php" class="btn  btn-primary" type="submit" > Cerrar </a>
 

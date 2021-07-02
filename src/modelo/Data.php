@@ -8,6 +8,7 @@ require_once "empleado.php";
 require_once "Usuario.php";
 require_once "Cajero.php";
 require_once "Cliente.php";
+require_once "apartado.php";
 class Data{
     private $con;
 
@@ -547,6 +548,56 @@ class Data{
         if(!$res){
             $error = mysqli_error($this->con->getCon());
             //printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function getApartados(){
+        $apartados = array();
+        $query="SELECT * from apartado";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        while($reg = mysqli_fetch_array($res)){
+            $ap = new Apartado($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5]);
+            //var_dump($ap);
+            array_push($apartados,$ap);
+        }
+        return $apartados;
+    }
+
+    public function insertarApartado($idz,$cliente,$abono,$resta,$est){
+        $query = "INSERT INTO apartado(codigo,id_cliente,ultimo_abono,saldo_restante,estatus) VALUES('$idz','$cliente','$abono','$resta','$est')";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            //printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function getApartado($ida){
+        $apartado;
+        $query = "SELECT * FROM apartado WHERE id_apartado = $ida";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n Query: %s", $error, $query);
+            return $error;
+        }
+        $reg = mysqli_fetch_array($res);
+        $apartado = new Apartado($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5]);
+
+        return $apartado;
+    }
+
+    public function abonar($id, $total, $re, $est){
+        $query="UPDATE apartado SET ultimo_abono = '$total', saldo_restante= '$re', estatus = '$est' WHERE id_apartado = '$id'";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n", $error);
         }
         return $error;
     }

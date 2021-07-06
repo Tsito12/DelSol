@@ -601,6 +601,40 @@ class Data{
         }
         return $error;
     }
+
+    public function guardarVenta($idc,$ide,$total){
+        $fecha = date("Y-m-d H:i:s");
+        $query = "INSERT into venta values (0, '$ide','$idc',$total,'$fecha')";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            //printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
+
+    public function getIdVenta(){
+        $query = "SELECT max(id_venta) from venta";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n", $error);
+        }
+        $reg = mysqli_fetch_array($res);
+        $idv = $reg[0];
+
+        return $idv;
+    }
+
+    public function insertDetalleVenta($idv, $codigo, $cant){
+        $query = "INSERT into detalle_venta values ('$idv', $codigo, $cant)";
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            //printf("Errormessage: %s\n", $error);
+        }
+        return $error;
+    }
 /*
     public function login($usuario, $contrasenia){
       $user = mysqli_real_escape_string($this->con->getCon(), $usuario);

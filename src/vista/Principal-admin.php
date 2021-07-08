@@ -106,7 +106,7 @@
                     <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente') { ?>
                     <div class="form-group col-12 col-md-3">
                         <div class="article">
-                            <a href="Caja-admin.php">
+                            <a href="caja-admin.php">
                                 <img src="../imgZ/caja-registradora.svg" width="400" height="250" alt="">
                                 <p>Cajero</p>
                             </a>
@@ -118,9 +118,9 @@
                     
                     <div class="form-group col-12  col-md-3">
                         <div class="article">
-                            <a href="#">
+                            <a href="Pedidos.php">
                                 <img src="../imgZ/devolucion-de-dinero.svg" width="400" height="250" alt="">
-                                <p>Devoluciones <span class="badge badge-pill badge-primary"> Prox </span></p>
+                                <p>Pedidos <span class="badge badge-pill badge-primary"> Prox </span></p>
                             </a>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                      <?php if ($_SESSION['puesto'] == 'Administrador') { ?>
                     <div class="form-group col-12 col-md-3">
                         <div class="article">
-                            <a href="Usuario-Administrador.php">
+                            <a href="Usuario-administrador.php">
                                 <img src="../imgZ/grupo.svg" width="400" height="250" alt="">
                                 <p>Usuarios</p>
                             </a>

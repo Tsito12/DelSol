@@ -32,10 +32,10 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-10"></div>
-                    <div class="sesion col-12 col-sm-2 "> 
+                    <div class="sesion col-12 col-sm-2 "> <a href="../controlador/salir.php">
                         <span class=" btn btn-danger btn-sm" type="submit"> Cerrar Sesion
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        </span>
+                        </span></a>
                     </div>
                     <div class=" col-12">
                         <img src="../imgZ/sapato.svg" class="imgR" width="200" height="150" alt="avatar">
@@ -48,7 +48,7 @@
                         <form enctype="multipart/form-data" action="../controlador/guardarSapato.php" method="post" id="formulario">
                             <div class="responsive input-group">
                                 <!-- Area para buscar un zapato por descripción -->
-                                <input type="text" id="buscar" name="buscar" class="form-control" placeholder="Ingrese el nombre del modelo de zapato" onkeyup="buscarTabla()"><span class="input-group-addon btn btn-outline-primary "> buscar</span>
+                                <input type="text" id="buscar" name="buscar" class="form-control" placeholder="Ingrese el nombre del modelo de zapato" onkeyup="buscarTabla()"><!--<span class="input-group-addon btn btn-outline-primary "> buscar</span>-->
 
                                 <span  type="button" class="input-group-addon btn btn-outline-primary "  data-toggle="modal" data-target="#exampleModalCenter"> <i class="fa fa-plus" aria-hidden="true"></i> Agregar </span>
                             </div>
@@ -88,6 +88,14 @@
                                                 <label for="talla" class="col-sm-4 col-form-label">Talla*</label>
                                                     <div class="col-sm-8">
                                                         <select class="form-control" id="talla" name="tallasZapato[]" multiple required onfocusout="vacio(this)">
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="14">14</option>
+                                                            <option value="15">15</option>
+                                                            <option value="16">16</option>
+                                                            <option value="17">17</option>
+                                                            <option value="18">18</option>
+                                                            <option value="19">19</option>
                                                             <option value="20">20</option>
                                                             <option value="21">21</option>
                                                             <option value="22">22</option>
@@ -209,7 +217,10 @@
                                   $prov = $d->getProveedor($s->getIdProveedor());
                                   echo "<td>".$prov->getRazonSocial()."</td>";
                                   echo "<td class=\"proveedor d-none\">".$s->getIdProveedor()."</td>";
-                                  echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                  if($_SESSION['puesto']!="Cajero"){
+                                    echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                  }
+                                  
                                   
                                   echo "</tr>";
                                 }

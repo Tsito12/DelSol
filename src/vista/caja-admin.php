@@ -64,15 +64,15 @@
 
                     <div class="col-12 col-md-3"></div>
                     <div class="col-12 col-md-6"><br>
-                        <form action="buscarC.php" method="get" class="form-control">
+                        <!--<form action="buscarC.php" method="get" class="form-control">-->
                             <div class="responsive input-group">
-                                <input type="text" name="busqueda" class="form-control" placeholder="Buscar">
-                                <input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar">
+                                <input type="text" id="buscar" onkeyup="buscarTabla()" name="busqueda" class="form-control" placeholder="Buscar">
+                                <!--<input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar">-->
 
                                 <a href="AgregarC.php" type="button" class=" btn btn-outline-primary " > <i class="fa fa-plus" aria-hidden="true"></i> Agregar </a>
                             </div>
                              
-                        </form>
+                       <!-- </form> -->
                     </div>
                     <div class="col-12 col-md-3"></div>
                     <div class="table-responsive">
@@ -89,7 +89,7 @@
                                   
                                 </tr>
                               </thead>
-                              <tbody class="tcuerpo">
+                              <tbody class="tcuerpo" id="tabla">
                               
                                 <?php
                                     //$d = new Data();

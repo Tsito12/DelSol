@@ -27,10 +27,10 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-10"></div>
-                    <div class="sesion col-12 col-sm-2 "> 
+                    <div class="sesion col-12 col-sm-2 "> <a href="../controlador/salir.php">
                         <span class=" btn btn-danger btn-sm" type="submit"> Cerrar Sesion
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        </span>
+                        </span></a>
                     </div>
                     <div class=" col-12">
                         <img src="../imgZ/diablito.svg" class="imgR" width="200" height="150" alt="avatar">
@@ -131,7 +131,10 @@
                                     echo "<td class=\"telefono\">".$p->getTelefonoProveedor()."</td>";
                                     echo "<td class=\"correo\">".$p->getCorreoProveedor()."</td>";
                                     echo "<td class=\"rfc\">".$p->getRfcProveedor()."</td>";
-                                    echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editarProv(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminarProv(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                    if($_SESSION['puesto']!="Almacenista"){
+                                      echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editarProv(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminarProv(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                    }
+                                    
                                     echo "</tr>";
                                 }
                               ?>

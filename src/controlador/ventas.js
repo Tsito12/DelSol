@@ -29,7 +29,7 @@ $(document).ready(function(){
                     document.getElementById("text_precio").innerText=sapato[4];
                     if(sapato[1]!==""){
                         document.getElementById("text_cant_producto").removeAttribute("disabled");
-                        document.getElementById("add_product_venta").style="display:flex";
+                        document.getElementById("add_product_venta").style="display:inline-block";
                     }
                 }
             });
@@ -69,7 +69,7 @@ $(document).ready(function(){
             const precio_u = document.getElementById("text_precio").innerText;
             var subtotal = parseFloat(precio_u)*parseInt(cant);
             document.getElementById("text_precio_total").innerText=subtotal;
-            document.getElementById("add_product_venta").style="display:flex";
+            document.getElementById("add_product_venta").style="display:inline-block";
         }
         else{
             document.getElementById("add_product_venta").style="display:none";
@@ -111,7 +111,7 @@ $(document).ready(function(){
             document.getElementById("iva").innerText="IVA :"+iva;
             document.getElementById("total").innerText="Total: "+total;
             document.getElementById("add_product_venta").style="display:none";
-            document.getElementById("btn_facturar_venta").style="display:flex";
+            document.getElementById("btn_facturar_venta").style="display:inline-block";
         }
     
     });

@@ -52,7 +52,7 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-10"></div>
-                    <div class="sesion col-12 col-sm-2 "> <a href="salir.php">
+                    <div class="sesion col-12 col-sm-2 "> <a href="../controlador/salir.php">
                         <span class=" btn btn-danger btn-sm" type="submit"> Cerrar Sesion
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                         </span></a>
@@ -73,7 +73,7 @@
                           <h4> Datos del cliente </h4>
                           
                           <a href="" data-toggle="modal" data-target="#exampleModalCenterC" class="btn btn_new_cliente btn-outline-primary"><i class="fa fa-plus-square" aria-hidden="true"></i> Nuevo cliente</a>
-                          <a href="" data-toggle="modal" data-target="#exampleModalCliente" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Litado de cliente</a>
+                          <a href="" data-toggle="modal" data-target="#exampleModalCliente" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Listado de cliente</a>
                           <?php include "modalAgregarC.php"; ?>
                           <?php include "modalClientes.php"; ?>
                         </div>

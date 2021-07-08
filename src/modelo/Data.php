@@ -339,7 +339,7 @@ class Data{
         $empleados = array();
         $query ="SELECT e.id_empleado, e.nombre_empleado, e.apellido1_empleado,e.apellido2_empleado,e.sexo,
                 e.edad,e.rfc_empleado, e.sueldo_base,e.puesto, u.usuario,u.contraseña FROM empleado e 
-                INNER JOIN usuario u on e.id_empleado = u.id_empleado";
+                INNER JOIN usuario u on e.id_empleado = u.id_empleado order by id_empleado";
         $res = $this->con->ejecutar($query);
         if(!$res){
             printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
@@ -440,6 +440,25 @@ class Data{
             printf("Errormessage: %s\n", $error);
         }
         return $error;
+    }
+
+    public function deleteUsuario($id){
+        $query = "DELETE from usuario where id_empleado='$id'";
+        $res = $this->con->ejecutar($query);
+        $error="";
+        if(!$res){
+            $error = mysqli_error($this->con->getCon()).$query;
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
+        return $error;
+    }
+
+    public function deleteEmpleado($id){
+        $query = "DELETE from empleado where id_empleado='$id'";
+        $res = $this->con->ejecutar($query);
+        if(!$res){
+            printf("Errormessage: %s\n", mysqli_error($this->con->getCon()));
+        }
     }
 
     public function getCajeros(){
@@ -634,6 +653,106 @@ class Data{
             //printf("Errormessage: %s\n", $error);
         }
         return $error;
+    }
+
+    public function ventaDeZapatos($periodo){
+        switch($periodo){
+            case "mes":
+                $fecha = date("n");
+                $query = "SELECT z.codigo, descripcion, razon_social,count(z.codigo) as vendidos from detalle_venta d inner join 
+                          zapato z on d.codigo=z.codigo inner join venta on venta.id_venta = d.id_venta inner join
+                          proveedor p on z.id_proveedor = p.id_proveedor 
+                          where MONTH(fecha)=$fecha group by codigo order by vendidos desc";
+                break;
+            case "year":
+                $fecha = date("Y");
+                $query = "SELECT z.codigo, descripcion,razon_social,count(z.codigo) as vendidos from detalle_venta d inner join 
+                          zapato z on d.codigo=z.codigo inner join venta on venta.id_venta = d.id_venta inner join
+                          proveedor p on z.id_proveedor = p.id_proveedor 
+                          where YEAR(fecha)=$fecha group by codigo order by vendidos desc";
+                break;
+            case "all":
+                $fecha = "";
+                $query = "SELECT z.codigo, descripcion,razon_social,count(z.codigo) as vendidos from detalle_venta d inner join 
+                          zapato z on d.codigo=z.codigo inner join venta on venta.id_venta = d.id_venta inner join
+                          proveedor p on z.id_proveedor = p.id_proveedor 
+                          group by codigo order by vendidos desc";
+                break;
+            case "semana":
+                $fecha = date("W");
+                $query = "SELECT z.codigo, descripcion,razon_social,count(z.codigo) as vendidos from detalle_venta d inner join 
+                            zapato z on d.codigo=z.codigo inner join venta on venta.id_venta = d.id_venta inner join
+                          proveedor p on z.id_proveedor = p.id_proveedor 
+                            where WEEK(fecha)=$fecha group by codigo order by vendidos desc";
+                break;
+        }
+
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n Query: %s", $error, $query);
+            return $error;
+        }
+        //$reg = mysqli_fetch_array($res);
+        //$apartado = new Apartado($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5]);
+
+        //return $apartado;
+        return $res;
+        
+    }
+
+    public function zapatosNoVendidos($periodo){
+        switch($periodo){
+            case "mes":
+                $fecha = date("n");
+                //select z.codigo, descripcion, razon_social, existencia from zapato z left join detalle_venta d on z.codigo = d.codigo inner join proveedor p on z.id_proveedor = p.id_proveedorwhere cantidad_venta is null
+                $query = "SELECT z.codigo, descripcion, razon_social, existencia from zapato z left join 
+                          detalle_venta d on z.codigo = d.codigo inner join proveedor p on 
+                          z.id_proveedor = p.id_proveedor 
+                          inner join venta v on v.id_venta = v.id_venta 
+                          where cantidad_venta is null and MONTH(fecha)=$fecha group by z.codigo 
+                          order by existencia desc;";
+                break;
+            case "year":
+                $fecha = date("Y");
+                $query = "SELECT z.codigo, descripcion, razon_social, existencia from zapato z left join 
+                            detalle_venta d on z.codigo = d.codigo inner join proveedor p on 
+                            z.id_proveedor = p.id_proveedor 
+                            inner join venta v on v.id_venta = v.id_venta 
+                            where cantidad_venta is null and YEAR(fecha)=$fecha group by z.codigo 
+                            order by existencia desc;";
+                break;
+            case "all":
+                $fecha = "";
+                $query = "SELECT z.codigo, descripcion, razon_social, existencia from zapato z left join 
+                            detalle_venta d on z.codigo = d.codigo inner join proveedor p on 
+                            z.id_proveedor = p.id_proveedor 
+                            inner join venta v on v.id_venta = v.id_venta 
+                            where cantidad_venta is null group by z.codigo order by existencia desc;";
+                break;
+            case "semana":
+                $fecha = date("W");
+                $query = "SELECT z.codigo, descripcion, razon_social, existencia from zapato z left join 
+                            detalle_venta d on z.codigo = d.codigo inner join proveedor p on 
+                            z.id_proveedor = p.id_proveedor 
+                            inner join venta v on v.id_venta = v.id_venta 
+                            where cantidad_venta is null and WEEK(fecha)=$fecha group by z.codigo 
+                            order by existencia desc;";
+                break;
+        }
+
+        $res=$this->con->ejecutar($query);
+        if(!$res){
+            $error = mysqli_error($this->con->getCon());
+            printf("Errormessage: %s\n Query: %s", $error, $query);
+            return $error;
+        }
+        //$reg = mysqli_fetch_array($res);
+        //$apartado = new Apartado($reg[0],$reg[1],$reg[2],$reg[3],$reg[4],$reg[5]);
+
+        //return $apartado;
+        return $res;
+        
     }
 /*
     public function login($usuario, $contrasenia){

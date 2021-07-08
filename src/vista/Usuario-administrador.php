@@ -1,5 +1,15 @@
 <?php
-//require_once "../modelo/Data.php";
+require_once "../modelo/Data.php";
+$d = new Data();
+
+if(!empty($_POST['id'])){
+  $id = $_POST['id'];
+
+  $error = $d->deleteUsuario($id);
+  $d->deleteEmpleado($id);
+}
+
+
                                              
                                      
 ?>
@@ -36,7 +46,7 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-10"></div>
-                    <div class="sesion col-12 col-sm-2 "> <a href="salir.php">
+                    <div class="sesion col-12 col-sm-2 "> <a href="../controlador/salir.php">
                         <span class=" btn btn-danger btn-sm" type="submit"> Cerrar Sesion
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                         </span></a>
@@ -48,15 +58,15 @@
 
                     <div class="col-12 col-md-3"></div>
                     <div class="col-12 col-md-6"><br>
-                        <form action="buscarU.php" method="get" class="form-control">
+                        <!--<form action="buscarU.php" method="get" class="form-control">-->
                             <div class="responsive input-group">
-                                <input type="text" name="busqueda" class="form-control" placeholder="Buscar">
-                                <input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar"> 
+                                <input type="text" name="busqueda" class="form-control" id="buscar" onkeyup="buscarTabla()" placeholder="Buscar">
+                                <!--<input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar"> -->
 
 
                                 <a href="AgregarForU.php" type="button" class=" btn btn-outline-primary "  > <i class="fa fa-plus" aria-hidden="true"></i> Agregar </a>
                             </div>
-                          </form>
+                          <!--</form>-->
                              
                             <br>
                        
@@ -83,10 +93,10 @@
                                   <th scope="col">        </th>
                                 </tr>
                               </thead>
-                              <tbody class="tcuerpo">
+                              <tbody class="tcuerpo" id="tabla">
                                 
                                   <?php
-                                  require_once "../modelo/Data.php";
+                                  //require_once "../modelo/Data.php";
                                   
                                   $d = new Data();
                                   $empleados = $d->getEmpleados();
@@ -102,7 +112,7 @@
                                     echo "<td class=\"sueldo\">".$e->getSueldoBase()."</td>";
                                     echo "<td class=\"puesto\">".$e->getPuesto()."</td>";
                                     echo "<td class=\"usuario\">".$e->getUsuario()."</td>";
-                                    echo "<td class=\"passw\">".$e->getContrasenia()."</td>";
+                                    echo "<td class=\"passw\">".md5($e->getContrasenia())."</td>";
                                     echo "<td><button class=\"btn btn-warning\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
                                     echo "</tr>";
                                   }
@@ -175,12 +185,10 @@
     
                     </div>
 
-
                 </div>
             </div>
             
             </div>
-         
         </div>
  </div>
      

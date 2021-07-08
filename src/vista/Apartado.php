@@ -32,7 +32,7 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-10"></div>
-                    <div class="sesion col-12 col-sm-2 "> <a href="salir.php">
+                    <div class="sesion col-12 col-sm-2 "> <a href="../controlador/salir.php">
                         <span class=" btn btn-danger btn-sm" type="submit"> Cerrar Sesion
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                         </span></a>

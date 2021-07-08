@@ -133,7 +133,7 @@ if (empty($_SESSION['active'])) {
 
             
              <li>
-                 <a href="#">
+                 <a href="reportes.php">
                     <span class="icon"><i class="fa fa-line-chart" aria-hidden="true"></i></span>
                     <span class="title">Reportes</span>
                  </a>
@@ -193,9 +193,9 @@ if (empty($_SESSION['active'])) {
 
 
              <li>
-                 <a href="#">
+                 <a href="Pedidos.php">
                     <span class="icon"><i class="fa fa-retweet" aria-hidden="true"></i></span>
-                    <span class="title">Devoluciones<span class="badge badge-pill badge-primary"> Prox </span></span>
+                    <span class="title">Pedidos<span class="badge badge-pill badge-primary"> Prox </span></span>
                  </a>
 
 

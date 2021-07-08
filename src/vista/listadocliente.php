@@ -39,7 +39,7 @@ if(!empty($_POST['idu']))
 
                 <div class="row">
                     <div class="col-12 col-sm-10"></div>
-                    <div class="sesion col-12 col-sm-2 "><a href="salir.php"> 
+                    <div class="sesion col-12 col-sm-2 "><a href="../controlador/salir.php"> 
                         <span class=" btn btn-danger btn-sm" type="submit"> Cerrar Sesion
                             <i class="fa fa-sign-in" aria-hidden="true"></i>
                         </span></a>
@@ -51,17 +51,17 @@ if(!empty($_POST['idu']))
 
                     <div class="col-12 col-md-3"></div>
                     <div class="col-12 col-md-6"><br>
-                        <form action="buscarcli.php" method="get" class="form-control">
+                        <!--<form action="buscarcli.php" method="get" class="form-control">-->
                             <div class="responsive input-group">
-                                <input type="text" name="busqueda" class="form-control" placeholder="Buscar">
-                                <input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar">
+                                <input type="text" name="busqueda" id="buscar" onkeyup="buscarTabla()" class="form-control" placeholder="Buscar">
+                                <!--<input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar">-->
 
                                 <a href="" type="button" class=" btn btn-outline-primary " data-toggle="modal" data-target="#exampleModalCenterC" > <i class="fa fa-plus" aria-hidden="true"></i> Agregar </a>
                                 
                                 
                             </div>
                              
-                        </form>
+                        <!--</form>-->
                              <?php include "modalAgregarC.php"; ?>
                     </div>
                     <div class="col-12 col-md-3"></div>
@@ -71,7 +71,7 @@ if(!empty($_POST['idu']))
 
 
                                 <tr>
-                                   <th># CLIETE</th> 
+                                   <th># CLIENTE</th> 
                                   <!--<th scope="col">NIT</th>-->
                                   <th scope="col">NOMBRE</th>
                                   <th scope="col">DIRECCION</th>
@@ -82,7 +82,7 @@ if(!empty($_POST['idu']))
                                   
                                 </tr>
                               </thead>
-                              <tbody class="tcuerpo">
+                              <tbody class="tcuerpo" id="tabla">
                                 <?php
                                     //require_once "../modelo/Data.php";
                                     $d = new Data();

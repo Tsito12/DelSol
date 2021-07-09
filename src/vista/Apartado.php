@@ -44,10 +44,10 @@
 
                     <div class="col-12 col-md-3"></div>
                     <div class="col-12 col-md-6"><br>
-                        <form action="buscarApar.php" method="get" class="form-control">
+                        <!--<form action="buscarApar.php" method="get" class="form-control">-->
                             <div class="responsive input-group">
                                 <input type="text" name="busqueda" class="form-control" placeholder="Buscar">
-                                <input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar"> 
+                                <!--<input type="submit"  class="input-group-addon btn btn-outline-primary " value="Buscar"> -->
 
                                 
 
@@ -57,7 +57,7 @@
                                 
                             </div>
                             
-                          </form>
+                          <!--</form>-->
                              <?php include "modalapartado.php"; ?>
                             <br>
                        

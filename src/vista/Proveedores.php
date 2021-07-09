@@ -41,7 +41,7 @@
                     <div class="col-12 col-md-6"><br>
                         <form id="formP" method="POST" action="../controlador/Proveedores.php">
                             <div class="responsive input-group">
-                                <input type="text" name="buscar" id="buscar" class="form-control" placeholder="Ingrese el nombre del proveedor" onkeyup="buscarTabla()"><span class="input-group-addon btn btn-outline-primary "> buscar</span>
+                                <input type="text" name="buscar" id="buscar" class="form-control" placeholder="Ingrese el nombre del proveedor" onkeyup="buscarTabla()"><!--<span class="input-group-addon btn btn-outline-primary "> buscar</span>-->
 
                                 <span  type="button" class="input-group-addon btn btn-outline-primary "  data-toggle="modal" data-target="#exampleModalCenter"> <i class="fa fa-plus" aria-hidden="true"></i> Agregar </span>
                             </div>

@@ -151,7 +151,7 @@
 
 
      <select name="Estatus" class="form-control">
-     <option value="Pendiete">No liquidado</option>
+     <option value="Pendiente">No liquidado</option>
      <option value="Liquidado">Liquidado</option>
      </select><br>
 

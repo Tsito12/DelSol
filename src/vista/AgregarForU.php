@@ -79,7 +79,7 @@
       
   </head>
 <body style=" background:   #C5FEFE; ">
-   <form  class="form-register" action="" method="post">
+   <form  class="form-register" id="myform" action="" method="post">
      <div class="tit" ><h1  class="text-center">USUARIO</h1></div>
   
     <h4>Agregar Usuario</h4>
@@ -103,7 +103,7 @@
       <option value="Administrador">Administrador </option>
       <option value="Almacenista">Almacenista </option>
       <option value="Cajero">Cajero </option>
-      <option value="Generente">Generente </option>
+      <option value="Gerente">Gerente </option>
 
                               
       </select><br> 
@@ -116,5 +116,30 @@
 
   
  </form>
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js" integrity="sha512-O/nUTF5mdFkhEoQHFn9N5wmgYyW323JO6v8kr6ltSRKriZyTr/8417taVWeabVS4iONGk2V444QD0P2cwhuTkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript">
+    
+/Agregar funciones jquery validator/
+$.validator.addMethod("rfc", function (value, element) {
+    if (value !== '') {
+        var patt = new RegExp("^[A-Z,Ñ,&]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?$");
+        return patt.test(value);
+    } else {
+        return false;
+    }
+}, "Ingrese un RFC valido");
+
+$( "#myform" ).validate({
+  rules: {
+    rfc: {
+      rfc: true
+    }
+  }
+});
+
+  </script>
 </body>
 </html>

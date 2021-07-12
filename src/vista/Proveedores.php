@@ -80,14 +80,14 @@
                                           <div class="form-group row">
                                                 <label for="email" class="col-sm-4 col-form-label">Correo electronico*</label>
                                                     <div class="col-sm-8">
-                                                      <input type="text" class="form-control" id="email" name="email" placeholder="Ingrese el correo electronico de la empresa" required onfocusout="vacio(this)">
+                                                      <input type="text" class="form-control" id="email" name="email" placeholder="Ingrese el correo electronico de la empresa" required onfocusout="comprobarCorreo(this)">
                                                       <p class="vacio" style="font-size: 1rem; color: red; font-size: 0.75rem;"></p>
                                                     </div>
                                           </div>
                                           <div class="form-group row">
                                             <label for="rfc" class="col-sm-4 col-form-label">RFC de la empresa*</label>
                                             <div class="col-sm-8">
-                                              <input type="text" class="form-control" id="rfc" name ="rfc" placeholder="Ingrese el RFC de la empresa" required onfocusout="vacio(this)">
+                                              <input type="text" class="form-control" id="rfc" name ="rfc" placeholder="Ingrese el RFC de la empresa" required onfocusout="comprobarRFC(this)">
                                               <p class="vacio" style="font-size: 1rem; color: red; font-size: 0.75rem;"></p>
                                             </div>
                                           </div>
@@ -96,7 +96,9 @@
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limpiarProv()">Cerrar</button>
-                                        <button type="submit" id="btnguardar" class="btn btn-primary">Guardar</button>
+                                        <button type="button" id="btnguardarS" class="btn btn-primary">Guardar</button>
+                                        <progress></progress>
+                                        <h6 id="resultado"></h6>
                                       </div>
                                     </div>
                                   </div>
@@ -132,7 +134,7 @@
                                     echo "<td class=\"correo\">".$p->getCorreoProveedor()."</td>";
                                     echo "<td class=\"rfc\">".$p->getRfcProveedor()."</td>";
                                     if($_SESSION['puesto']!="Almacenista"){
-                                      echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editarProv(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminarProv(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                      echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editarProv(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminarProv(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Borrar</button></td>";
                                     }
                                     
                                     echo "</tr>";
@@ -161,7 +163,7 @@
         </script>
     <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="../controlador/paginator.js"></script>
-    <script src="../controlador/herramientas.js"></script>                            
+    <script src="../controlador/herramientasP.js"></script>                            
 
 </body>
 </html>

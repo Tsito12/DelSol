@@ -6,10 +6,10 @@ $d = new Data();
 if($accion=="buscarCliente"){
     $idc = $_POST['idc'];
     $cliente = $d->getCliente($idc);
-    echo($cliente->getIdCliente()."/".
-         $cliente->getNombreCliente()."/".
-         $cliente->getDireccionCliente()."/".
-         $cliente->getTelefonoCliente()."/".
+    echo($cliente->getIdCliente().";".
+         $cliente->getNombreCliente().";".
+         $cliente->getDireccionCliente().";".
+         $cliente->getTelefonoCliente().";".
          $cliente->getCorreoCliente());
 }
 elseif($accion=="buscarZapato"){

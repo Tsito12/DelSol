@@ -225,7 +225,9 @@ require_once "../modelo/Data.php";
                             </div>
                         </div>
                     </div>
-
+                    <div><br>
+                    <?php include "grafica.php"; ?>
+                  </div>
 
                 </div>
                 <div class="text-center">

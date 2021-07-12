@@ -157,8 +157,8 @@
 
 
      
-      <div ><?php echo isset($alert) ? $alert : ''; ?></div>
-      <div ><?php echo isset($error) ? $error : ''; ?></div>
+      <div ><?php// echo isset($alert) ? $alert : ''; ?></div>
+      <div ><?php //echo isset($error) ? $error : ''; ?></div>
       <input class="btn  btn-primary" type="submit" value="Agregar"> |
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   

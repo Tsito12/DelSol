@@ -65,7 +65,7 @@ if (empty($_SESSION['active'])) {
 
 
 
-             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente'  || $_SESSION['puesto'] == 'Cajero') { ?>
+             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'  || $_SESSION['puesto'] == 'Cajero') { ?>
              <li>
                  <a href="ventas.php">
                     <span class="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
@@ -85,7 +85,7 @@ if (empty($_SESSION['active'])) {
                  </li>
              <?php } ?>
 
-             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente'  || $_SESSION['puesto'] == 'Cajero') { ?>
+             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'  || $_SESSION['puesto'] == 'Cajero') { ?>
 
              <li>
                  <a href="listadocliente.php">
@@ -110,7 +110,7 @@ if (empty($_SESSION['active'])) {
                <?php } ?>
 
 
-             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente'  || $_SESSION['puesto'] == 'Almacenista' ||  $_SESSION['puesto'] == 'Cajero') { ?>
+             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'  || $_SESSION['puesto'] == 'Almacenista' ||  $_SESSION['puesto'] == 'Cajero') { ?>
              <li>
                  <a href="Zapatos.php">
                     <span class="icon"><i class="fa fa-university" aria-hidden="true"></i></span>
@@ -141,7 +141,7 @@ if (empty($_SESSION['active'])) {
 
              </li>
 
-             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente'  ||  $_SESSION['puesto'] == 'Cajero') { ?>
+             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'  ||  $_SESSION['puesto'] == 'Cajero') { ?>
 
              <li>
                  <a href="Apartado.php">
@@ -168,7 +168,7 @@ if (empty($_SESSION['active'])) {
 
 
              <!-- si la seccion es administrador entras a la direccion con extencion caja-admin.php -->
-              <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente') { ?>
+              <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente') { ?>
              <li>
                  <a href="caja-admin.php">
                     <span class="icon"><i class="fa fa-usd" aria-hidden="true"></i></span>
@@ -191,15 +191,26 @@ if (empty($_SESSION['active'])) {
 
 
 
-
+             <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'|| $_SESSION['puesto'] == 'Almacenista') { ?>
              <li>
                  <a href="Pedidos.php">
                     <span class="icon"><i class="fa fa-retweet" aria-hidden="true"></i></span>
-                    <span class="title">Pedidos<span class="badge badge-pill badge-primary"> Prox </span></span>
+                    <span class="title">Pedidos<span class="badge badge-pill badge-primary">  </span></span>
                  </a>
 
 
              </li>
+             <?php } else{ ?>
+            <li>
+                 <a href="Principal-admin.php">
+                 <span class="icon"><i class="fa fa-retweet" aria-hidden="true"></i></span>
+                    <span class="title">Pedidos</span>
+                 </a>
+
+
+             </li>
+             <?php  }?>
+
 
              <!-- si la seccion es administrador entras a la direccion con extencion caja-admin.php -->
              <?php if ($_SESSION['puesto'] == 'Administrador') { ?>

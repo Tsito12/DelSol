@@ -58,8 +58,8 @@
 
          <input class="form-control" type="text" name="dir_clinte" placeholder="Ingrese la direccion del cliente*" required> <br>
 
-         <input class="form-control" type="text" name="tel_clinte"  placeholder="Ingrese el telefono del cliente*" pattern="951[0-9]{7}" required><br>
-
+         <input class="form-control" type="text" name="tel_clinte"  placeholder="Ingrese el telefono del cliente*" pattern="[0-9]{13}" required><br>
+         
          <input type="email" class="form-control" name="cor_clinte"  placeholder="Ingrese el correo del cliente" required><br>
 
                                    
@@ -68,7 +68,7 @@
      
       
       <input class="btn  btn-primary" type="submit" value="Aceptar"> |
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      <button type="button" id="btnguardar" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
   
   
  </form>

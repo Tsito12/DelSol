@@ -16,7 +16,7 @@
                                    <th># CLIENTE</th> 
                                   <!--<th scope="col">NIT</th>-->
                                   <th scope="col">NOMBRE</th>
-                                  <th scope="col">DIRECCION</th>
+                                  <th scope="col">DIRECCIÓN</th>
                                   <th scope="col">TELEFONO</th>
                                   <th scope="col">CORREO</th>
                                   <!--<th colspan="2">ACCION</th>-->

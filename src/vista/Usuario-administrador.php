@@ -20,7 +20,7 @@ if(!empty($_POST['id'])){
     <meta charset="utf-8">
     <meta name="viewport" contenet="width=decice-whith, initial-scale=1.0">
 
-    <title>Principal Admin</title>
+    <title>Usuarios</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
@@ -112,8 +112,8 @@ if(!empty($_POST['id'])){
                                     echo "<td class=\"sueldo\">".$e->getSueldoBase()."</td>";
                                     echo "<td class=\"puesto\">".$e->getPuesto()."</td>";
                                     echo "<td class=\"usuario\">".$e->getUsuario()."</td>";
-                                    echo "<td class=\"passw\">".md5($e->getContrasenia())."</td>";
-                                    echo "<td><button class=\"btn btn-warning\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                    echo "<td class=\"passw\">".($e->getContrasenia())."</td>";
+                                    echo "<td><button class=\"btn btn-warning\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Borrar</button></td>";
                                     echo "</tr>";
                                   }
                                   /*

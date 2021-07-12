@@ -30,7 +30,7 @@
     <meta charset="utf-8">
     <meta name="viewport" contenet="width=decice-whith, initial-scale=1.0">
 
-    <title>Caja Admin</title>
+    <title>Caja</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
@@ -99,7 +99,7 @@
                                     echo "<td class=\"ide\">".$c->getIdEmpleado()."</td>";
                                     echo "<td class=\"idc\">".$c->getIdCajero()."</td>";
                                     echo "<td class=\"numcaja\">".$c->getNumCaja()."</td>";
-                                    echo "<td><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" ><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                    echo "<td><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" ><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Borrar</button></td>";
                                     echo "</tr>";
                                     }
                                     //$query =mysqli_query($conectar,"SELECT id_empleado, id_cajero, num_caja FROM cajero WHERE EstatusC = 1 order by id_cajero" );

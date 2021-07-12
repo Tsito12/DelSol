@@ -67,7 +67,8 @@ if($editar==="editar"){
     } 
     */
     
-        header("Location: ../vista/Zapatos.php");
+        //header("Location: ../vista/Zapatos.php");
+        echo("datos actualizados correctamente");
     exit;
 }
 else if($editar==="borrar"){
@@ -116,7 +117,7 @@ if ( $archivo != "none" )
 
 
     $codigo_sapato=$data->guardarSapato($sapato);
-    echo "codigo sapato: ".$codigo_sapato;
+    //echo "codigo sapato: ".$codigo_sapato;
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -126,9 +127,9 @@ if ( $archivo != "none" )
     {     
         $data->guardarZapatoTalla($codigo_sapato, $tallas[$i],0);    
     } 
-    
+    echo("Datos guardados correctamente");
     //$data->guardarZapatoTalla($codigo_sapato, $tallas[0]);
-    header("Location: ../vista/Zapatos.php");
+    //header("Location: ../vista/Zapatos.php");
 }
  else
     print "No se ha podido subir el archivo al servidor";

@@ -125,7 +125,7 @@
                                                                        
                                       <td>
                                         <?php
-                                        if (($a->getUltimoAbono()) != ($sapatoApartado->getPrecioVenta())) {
+                                        if (($a->getStatus()) != "Liquidado") {
                                           
                                         
                                         ?>
@@ -158,7 +158,7 @@
                      <div class="col-12" style="text-align: center;" >
                                <a href="listadocliente.php" type="button" class=" btn btn-primary "  >  Listado de cliente </a>
                     </div>
-                    <div id="jsjs"><?php echo isset($error) ? $error : ''; ?></div>  
+                    <!--<div id="jsjs"><?php echo isset($error) ? $error : ''; ?></div>  -->
 
                 </div>
             </div>

@@ -68,7 +68,7 @@
                     <div class="col-12"> <br></div>
 
 
-                    <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente'  || $_SESSION['puesto'] == 'Almacenista' ||  $_SESSION['puesto'] == 'Cajero') { ?>
+                    <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'  || $_SESSION['puesto'] == 'Almacenista' ||  $_SESSION['puesto'] == 'Cajero') { ?>
                     <div class="form-group col-12 col-md-3 ">
                         <div class="article">
                             <a href="Zapatos.php" >
@@ -79,7 +79,7 @@
                     </div>
                    <?php }  ?>
 
-                   <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente'  || $_SESSION['puesto'] == 'Cajero') { ?>
+                   <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'  || $_SESSION['puesto'] == 'Cajero') { ?>
                     <div class="form-group col-12 col-md-3">
                         <div class="article">
                             <a href="ventas.php">
@@ -103,7 +103,7 @@
                     
                     
                     <!--En este codigo de php lo que se hace es que si la sesion es Administrador puede al darle click puede entrar al apartado de cajero -->
-                    <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente') { ?>
+                    <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente') { ?>
                     <div class="form-group col-12 col-md-3">
                         <div class="article">
                             <a href="caja-admin.php">
@@ -115,16 +115,16 @@
                     <?php } ?>
                     
 
-                    
+                    <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'|| $_SESSION['puesto'] == 'Almacenista') { ?>
                     <div class="form-group col-12  col-md-3">
                         <div class="article">
                             <a href="Pedidos.php">
                                 <img src="../imgZ/devolucion-de-dinero.svg" width="400" height="250" alt="">
-                                <p>Pedidos <span class="badge badge-pill badge-primary"> Prox </span></p>
+                                <p>Pedidos <span class="badge badge-pill badge-primary">  </span></p>
                             </a>
                         </div>
                     </div>
-             
+                    <?php } ?>
 
 
 
@@ -153,7 +153,7 @@
                     
                 <?php } ?>
 
-                <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Generente'  || $_SESSION['puesto'] == 'Cajero') { ?>
+                <?php if ($_SESSION['puesto'] == 'Administrador' || $_SESSION['puesto'] == 'Gerente'  || $_SESSION['puesto'] == 'Cajero') { ?>
                     
                   <div class="form-group col-12  col-md-3">
                         <div class="article">

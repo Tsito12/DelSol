@@ -135,7 +135,8 @@
                                           <div class="form-group row">
                                                 <label for="imagen" class="col-sm-4 col-form-label">Imagen</label>
                                                     <div class="col-sm-8">
-                                                      <input type="file" class="form-control" id="imagen" name="imagenZapato">
+                                                      <input type="file" class="form-control" id="imagen" accept="image/png, image/jpeg" name="imagenZapato">
+                                                      <p id="imgF" style="font-size: 1rem; font-size: 0.75rem;"></p>
                                                     </div>
                                           </div>
                                           <div class="form-group row">
@@ -159,8 +160,10 @@
                                         </form>
                                       </div>
                                       <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limpiar()">Cerrar</button>
-                                        <button type="submit" id="btnguardar" class="btn btn-primary">Guardar</button>
+                                        <a id="btncerrar" href="Zapatos.php" class="btn btn-secondary" data-dismiss="modal" onclick="limpiar()">Cerrar</a>
+                                        <button type="button" id="btnguardarS" class="btn btn-primary">Guardar</button>
+                                        <progress></progress>
+                                        <h6 id="resultado"></h6>
                                       </div>
                                     </div>
                                   </div>
@@ -173,7 +176,7 @@
                         <table class="table table-hover" id="tabla">
                               <thead class="thead-dark">
                                 <tr>
-                                  <th scope="col">Descripcion</th>
+                                  <th scope="col">Descripción</th>
                                   <th scope="col">Modelo</th>
                                   <th scope="col">Color</th>
                                   <th scope="col">Tallas</th>
@@ -218,7 +221,7 @@
                                   echo "<td>".$prov->getRazonSocial()."</td>";
                                   echo "<td class=\"proveedor d-none\">".$s->getIdProveedor()."</td>";
                                   if($_SESSION['puesto']!="Cajero"){
-                                    echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                    echo "<td><button class=\"btn btn-warning\"data-toggle=\"modal\" data-target=\"#exampleModalCenter\" onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>    Editar   </button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Borrar</button></td>";
                                   }
                                   
                                   

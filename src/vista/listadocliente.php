@@ -74,10 +74,10 @@ if(!empty($_POST['idu']))
                                    <th># CLIENTE</th> 
                                   <!--<th scope="col">NIT</th>-->
                                   <th scope="col">NOMBRE</th>
-                                  <th scope="col">DIRECCION</th>
+                                  <th scope="col">DIRECCIÓN</th>
                                   <th scope="col">TELEFONO</th>
                                   <th scope="col">CORREO</th>
-                                  <th colspan="2">ACCION</th>
+                                  <th colspan="2">ACCIÓN</th>
                                   
                                   
                                 </tr>
@@ -94,7 +94,7 @@ if(!empty($_POST['idu']))
                                         echo "<td class=\"direccion\">".$c->getDireccionCliente()."</td>";
                                         echo "<td class=\"telefono\">".$c->getTelefonoCliente()."</td>";
                                         echo "<td class=\"correo\">".$c->getCorreoCliente()."</td>";
-                                        echo "<td><button class=\"btn btn-warning\"onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Eliminar</button></td>";
+                                        echo "<td><button class=\"btn btn-warning\"onclick=\"editar(this)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i>Editar</button><button class=\"btn btn-danger\" onclick=\"eliminar(this)\" form=\"formulario\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>Borrar</button></td>";
                                         echo "</tr>";
                                     }
                                     /*

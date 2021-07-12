@@ -114,16 +114,18 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    Datos del producto
+                                    Datos del zapato
                                 </div>
                                 <div class="col-sm-12 d-flex">
+                                <?php include "modalZapatos.php"; ?>
                                     <input type="tel" id="inputModelo" name="modelo" value="" class="form-control" 
-                                           placeholder="Código">
+                                           placeholder="Modelo del zapato">
                                     <input type="button" id="btnbuscar" name="accion"  value="Buscar" class="btn btn-outline-info">
+                                    <a href="" type="button" data-toggle="modal" data-target="#exampleModalZapato" class=" btn btn-outline-primary ">Lista </a>
                                 </div>
 
                                 <div class="col-sm-12">
-                                    <label for="descripcion">Descripcion</label>
+                                    <label for="descripcion">Descripción</label>
                                     <input type="text" id="descripcion" name="nomProducto" value="" class="form-control" 
                                            placeholder="Nombre" disabled>
                                 </div>
@@ -239,6 +241,7 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
         </script>
     <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../controlador/paginator.js"></script>
     <!--<script src="../controlador/herramientas.js"></script>-->
  
 

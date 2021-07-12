@@ -23,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="../Style/ventas.css">
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
     
    <style type="text/css">
      .table-responsive{
@@ -30,6 +31,28 @@
       
 
  
+ }
+ @media print{
+   #cabecerainput{
+     display: none;
+   }
+   #inputs, #form_new_cliente_venta{
+     display:none;
+   }
+
+   ul,li,input,button, p, h4{
+     display:none;
+   }
+
+    .datos_venta, .action_cliente, .imgR, .btn{
+      display:none;
+   }
+
+   table{
+     float: left;
+   }
+
+
  }
    </style>
  
@@ -129,20 +152,20 @@
                    
                          </div>
                       </div>
-                       <div class="table-responsive">
+                       <div class="table-responsive" id="jala">
                         <table class="table table-hover">
                               <thead >
-                                <tr class="thead-dark" >
-                                  <th width="50px">codigo</th>
+                                <tr class="thead-dark" id="cabecerainput" >
+                                  <th width="50px">código</th>
                                   <th>Modelo</th>
-                                  <th >Descripcion</th>
+                                  <th >Descripción</th>
                                   <th >Existencia</th>
                                   <th  >Cantidad</th>
                                   <th class="textright">Precio</th>
                                   <th class="textright">Precio Total</th>
-                                  <th class="textright">Accion</th>
+                                  <th class="textright">Acción</th>
                                 </tr>
-                                <tr> 
+                                <tr id="inputs"> 
                                       
                                       <th><input type="text" name="tex_cod_producto" id="tex_cod_producto"></th>
                                       <th id="text_Modelo">-</th>
@@ -157,13 +180,13 @@
                                        
                                 </tr>
                                 <tr class="thead-dark " >
-                                  <th >Codigo</th>
+                                  <th >Código</th>
                                   <th>Modelo</th>
-                                  <th >Descripcion</th>
+                                  <th >Descripción</th>
                                   <th  >Cantidad</th>
                                   <th >Precio</th>
                                   <th >Precio Total</th>
-                                  <th colspan="2">Accion</th>
+                                  <th colspan="2">Acción</th>
                                  
                                 </tr>
                               </thead>
@@ -207,6 +230,7 @@
         <!--<script type="text/javascript" src="../controlador/functios.js"></script>-->
         <script type="text/javascript" src="../controlador/ventas.js"></script>
     <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     
      <script type="text/javascript">    
   

@@ -54,7 +54,9 @@
                             <option value="all">Todo el tiempo</option>
                         </select>
                     </div>
-                    <div class="table-responsive">
+                    <div class="row">
+                    <div class="col-6">
+                    <div class="table-responsive col-4">
                             <table class="table table-hover" >
                               <thead class="thead-dark ">
                                 <tr >
@@ -71,11 +73,22 @@
                             </table>
                         </div>
                     </div>
-                    
-                        <div class="text-center">
-                                    <a  class="btn btn-primary" target="_blank" onclick="printJS('pdfVend', 'html')">Generar PDF</a>
+                    <div id="grafica" class="col-6">
                                 </div>
 
+                                <div class="col-6 text-center">
+                                    <a  class="btn btn-primary" target="_blank" onclick="printJS('pdfVend', 'html')">Generar PDF</a>
+                                </div>
+                    </div>
+                    
+                    
+                        
+
+
+                                
+
+                    </div>
+                    
                         <div id="abr">
                         <div class="col-12">
                         
@@ -89,7 +102,9 @@
                             <option value="all">Todo el tiempo</option>
                         </select>
                     </div>
-                    <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-6">
+                        <div class="table-responsive">
                             <table class="table table-hover" >
                               <thead class="thead-dark ">
                                 <tr >
@@ -105,9 +120,17 @@
                               </tbody>
                             </table>
                         </div>
-                        <div class="text-center">
+                        </div>
+                        <div id="graficaN" class="col-6">
+
+                                </div>
+                        <div class=" col-6 text-center">
                                     <a  class="btn btn-primary" target="_blank" onclick="printJS('abr', 'html')">Generar PDF</a>
                                 </div>
+                                
+                    </div>
+                    
+                        
                         </div>
                         
                 </div>
@@ -125,6 +148,7 @@
     <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="../controlador/reporte.js"></script>
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </body>
 </html>

@@ -51,7 +51,7 @@ $(document).ready(function(){
             },
             function(data,status){
                 if(status=="success"){
-                    var cliente = data.split("/");
+                    var cliente = data.split(";");
                     document.getElementById("nom_cliente").value=cliente[1];
                     document.getElementById("dir_cliente").value=cliente[2];
                     document.getElementById("tel_cliente").value=cliente[3];
@@ -153,6 +153,7 @@ $(document).ready(function(){
                 }
             });
 
+            printJS('jala', 'html');
             
     });
 

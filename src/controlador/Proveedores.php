@@ -13,7 +13,8 @@ $idp          = $_POST['codigo'];
 if($accion==="editar"){
     $proveedor_e = new Proveedor($idp,$razon_social, $direccion, $telefono, $email, $rfc);
     $data->editarProveedor($proveedor_e);
-    header("Location: ../vista/Proveedores.php");
+    echo("Datos editados correctamente");
+    //header("Location: ../vista/Proveedores.php");
     exit;
 }
 elseif ($accion === "borrar"){
@@ -24,5 +25,6 @@ elseif ($accion === "borrar"){
 
 $proveedor = new Proveedor(1,$razon_social, $direccion, $telefono, $email, $rfc);
 $data->guardarProveedor($proveedor);
-header("Location: ../vista/Proveedores.php");
+echo("Datos insertados correctamente");
+//header("Location: ../vista/Proveedores.php");
 ?>

@@ -30,3 +30,46 @@ function buscarTabla(){
       }
     }
   }
+
+  function vacio(elmnt){
+    const text = elmnt.value;
+    var nododiv = elmnt.parentElement.getElementsByClassName("vacio")[0];
+    if(text==""){
+      //alert("esta wea esta vacía");
+      
+      nododiv.innerHTML="Se debe llenar este campo";
+      //var p = document.createElement("p");
+      //const txtp = document.createTextNode("Se debe llenar este campo");
+      //p.appendChild(txtp);
+      //nododiv.appendChild(p);
+      return true;
+    }
+    else{
+      nododiv.innerHTML="";
+      return false;
+    }
+  }
+
+  function comprobarRFC(elmnt){
+    if(!vacio(elmnt)){
+      var re = '^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([A-Z]|[0-9]){2}([A]|[0-9]){1})?$'; 
+      var telefono = document.getElementById("rfc").value;
+      var botong = document.getElementById("btnguardar");
+      var OK = telefono.match(re);
+      console.log(OK);
+      var clase = botong.className;
+      clase.replaceAll("d-none","");
+      var clasd = clase+" d-none";
+      var nododiv = elmnt.parentElement.getElementsByClassName("vacio")[0];
+      if(OK!=null && OK[0] === telefono){
+        //botong.className=clase;
+        botong.removeAttribute("disabled");
+        nododiv.innerText="";
+      }
+      else{
+        //botong.className=clasd;
+        botong.setAttribute("disabled","disabled");
+        nododiv.innerText="Introducir un rfc válido";
+      }
+    }
+  }

@@ -318,6 +318,9 @@ function editarProv(elmnt){
 }
 
 function limpiarProv(){
+  if(document.getElementById("resultado").innerText!="error"&&document.getElementById("resultado").innerText!=""){
+    location.reload()
+  }
   document.getElementById("accion").value = "";
   document.getElementById("codigo").value = "";
   //poner los valores de los demas atributos del sapato
@@ -381,6 +384,54 @@ function comprobarNumTel(elmnt){
   }
 }
 
+function comprobarCorreo(elmnt){
+  if(!vacio(elmnt)){
+    var re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+    var telefono = document.getElementById("email").value;
+    var botong = document.getElementById("btnguardarS");
+    var OK = telefono.match(re);
+    console.log(OK);
+    var clase = botong.className;
+    clase.replaceAll("d-none","");
+    var clasd = clase+" d-none";
+    var nododiv = elmnt.parentElement.getElementsByClassName("vacio")[0];
+    if(OK!=null && OK[0] === telefono){
+      //botong.className=clase;
+      botong.removeAttribute("disabled");
+      nododiv.innerText="";
+    }
+    else{
+      //botong.className=clasd;
+      botong.setAttribute("disabled","disabled");
+      nododiv.innerText="Introducir un correo válido";
+    }
+  }
+}
+
+function comprobarRFC(elmnt){
+  if(!vacio(elmnt)){
+    var re = '^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])([A-Z]|[0-9]){2}([A]|[0-9]){1})?$'; 
+    var telefono = document.getElementById("rfc").value;
+    var botong = document.getElementById("btnguardarS");
+    var OK = telefono.match(re);
+    console.log(OK);
+    var clase = botong.className;
+    clase.replaceAll("d-none","");
+    var clasd = clase+" d-none";
+    var nododiv = elmnt.parentElement.getElementsByClassName("vacio")[0];
+    if(OK!=null && OK[0] === telefono){
+      //botong.className=clase;
+      botong.removeAttribute("disabled");
+      nododiv.innerText="";
+    }
+    else{
+      //botong.className=clasd;
+      botong.setAttribute("disabled","disabled");
+      nododiv.innerText="Introducir un rfc válido";
+    }
+  }
+}
+
 
 
 
@@ -389,7 +440,7 @@ function comprobarNumTel(elmnt){
     $('#btnguardarS').on('click', function () {
       $.ajax({
         // Your server script to process the upload
-        url: '../controlador/guardarSapato.php',
+        url: '../controlador/Proveedores.php',
         type: 'POST',
     
         // Form data
@@ -424,7 +475,6 @@ function comprobarNumTel(elmnt){
           document.getElementById("resultado").innerText=r;
         }
       });
-      document.getElementById("resultado").innerText=xhr['response'];
     });
 
 
